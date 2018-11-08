@@ -1,0 +1,51 @@
+/*
+	Jeffrey Quattrociocchi
+	jeffreyquattro@gmail.com
+	UMass Lowell
+	91.61 GUI Programming I
+	Created: 09-11-18
+
+	CSS file for index.html
+*/
+
+/*this will be the default for the page*/
+body {
+	background-image: URL("bg_blue.jpg");
+	color: black;
+	text-align: center;
+	font-family: Georgia, serif;
+	font-size: 120%;
+}
+/*this will be the main header*/
+h1 {
+	font-size: 150%;
+}
+/*this will be the secondary header*/
+h2 {
+	text-align: center;
+	font-size: 120%;
+}
+/*this will be the formatting any images*/
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	height: 10%;
+}
+/*a container for the assignments*/
+section {
+	max-width: 500px;
+	margin:auto;
+	text-align: left;
+	background-color: white;
+	font-family: Times, sans-serif;
+}
+/*an indented list*/
+dl {
+	margin-left: 20px;
+}
+/*centered text, like the introduction paragraph*/
+p {
+	margin: auto;
+	max-width: 500px;
+}

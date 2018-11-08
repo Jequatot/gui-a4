@@ -1,0 +1,102 @@
+header, hgroup, nav, footer, figure, figcaption, aside, section, article {
+	display: block;
+}
+body {
+	background-color: ;
+	color: #666666;
+	font-family: Arial, Helvetica, sans-serif;
+	
+	/*things i added
+		mostly background stuff
+	*/
+	background-image: URL("ptrbackground.jpg");
+	background-color: #00569f;
+	background-repeat: repeat-x;
+	
+	/*size of the page*/
+	width: 80vw;
+	min-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+nav ul {
+	font-size: 1.2em;
+	
+	/*things i added
+		formatting the navbar
+		im not totally happy with the size
+	*/
+	background-color: skyblue;
+	float: left;
+	list-style-type: none;
+	font-weight: bold;
+	height: 90vh;
+	padding-top: 20px;
+	margin-top: 0;
+	width: 175px;
+}
+nav a:visited {
+	color: #344873;
+}
+nav a:hover {
+	color: #FFFFFF;
+}
+h1 {
+	margin-bottom: 0;
+	padding: 10px;
+	
+	/*things i added
+		header
+		this one took me a while to figure out
+	*/
+	color: white;
+	background-image: URL("sunset.jpg");
+	background-position: right;
+	background-repeat: no-repeat;
+	background-color: rgb(0, 0, 50);
+}
+h2 {
+	color: #3399CC;
+}
+h1,
+h2 {
+	font-family: Georgia, "Times New Roman", serif;
+}
+#contact {
+	font-size: 90%;
+}
+dt {
+	color: #000033;
+}
+footer {
+	font-family: Georgia, "Times New Roman", serif;
+	
+	/*stuff i added*/
+	font-style: italic;
+	font-size: 12px;
+	margin-left: 200px;
+	padding-left: 50px;
+}
+
+/*sections i added*/
+#content {
+	list-style-image: url('marker.gif');
+	margin-left: 200px;
+	padding-left: 40px;
+	height: 86vh;
+}
+nav a{
+	color: black;
+	text-decoration: none;
+}
+img {
+	float: left;
+	padding-right: 30px;
+}
+span.resort {
+	font-weight: bold;
+	color: rgb(114,126,142);
+}
+#wrapper {
+	background-color: white;
+}
