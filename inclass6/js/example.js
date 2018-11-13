@@ -17,4 +17,4 @@ for(i = 0; i < items.length; i++) {
 }
 
 // ADD NUMBER OF ITEMS IN THE LIST TO THE HEADING
-document.getElementById("header").innerHTML += ": " + items.length + " items";
+document.getElementsByTagName("h2")[0].innerHTML += ": " + items.length + " items";
