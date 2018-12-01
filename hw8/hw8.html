@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+	Jeffrey Quattrociocchi
+	jeffreyquattro@gmail.com
+	UMass Lowell
+	91.61 GUI Programming I
+	Created: 11-01-18
+-->
+<html lang="engl">
+	<head>
+		<meta charset="UTF-8">
+		<title>Assignment #6</title>
+		<link rel="stylesheet" href="css/hw6.css">
+		<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+		<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+		<script src="js/hw6.js"></script>
+		
+
+      <script>
+         $(function() {
+		 
+			var slideopt = {
+				max: "50",
+				value: "0",
+				slide: function() {
+					document.getElementById("xs").value = $("#xs-s").slider("value");
+					document.getElementById("xe").value = $("#xe-s").slider("value");
+					document.getElementById("ys").value = $("#ys-s").slider("value");
+					document.getElementById("ye").value = $("#ye-s").slider("value");
+				}
+			}
+		 
+            $( "#xs-s" ).slider(slideopt);
+            $( "#xe-s" ).slider(slideopt);
+            $( "#ys-s" ).slider(slideopt);
+            $( "#ye-s" ).slider(slideopt);
+			
+			(function($){
+				$("#tabholder").tabs();
+				$("#add").click(function() {
+					$("#tabholder").tabs("add", "remoteTab.txt", "A New Tab!");
+				});
+			})(jQuery);
+         });
+      </script>
+	</head>
+	<body>
+		<div id="input-box">
+			X-Starting Value:<br>
+			<input type="text" id="xs" onchange='$("#xs-s").slider("value", document.getElementById("xs").value)'>
+			<div id="xs-s"></div>
+			<br>
+			X-Ending Value:<br>
+			<input type="text" id="xe" onchange='$("#xe-s").slider("value", document.getElementById("xe").value)'>
+			<div id="xe-s"></div>
+			<br>
+			Y-Starting Value:<br>
+			<input type="text" id="ys" onchange='$("#ys-s").slider("value", document.getElementById("ys").value)'>
+			<div id="ys-s"></div>
+			<br>
+			Y-Ending Value:<br>
+			<input type="text" id="ye" onchange='$("#ye-s").slider("value", document.getElementById("ye").value)'>
+			<div id="ye-s"></div>
+			<br><br>
+			<button type="button" id="add">Submit</button>
+			<button onclick="newTable()">Submit</button>
+			
+			<div id="error"></div>
+		</div>
+		<div id="tabholder">
+			</table>
+			<table id="table">
+		</div>
+	</body>
+</html>
