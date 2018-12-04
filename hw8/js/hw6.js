@@ -1,7 +1,8 @@
+var numberoftabs = 0;
+
 function makeTable() {
 	if(errorsfound()) return;
 	var temp;
-	
 	
 	if(document.getElementById("xs").value > document.getElementById("xe").value) {
 		temp = document.getElementById("xe").value;
@@ -15,7 +16,7 @@ function makeTable() {
 		document.getElementById("ys").value = temp;
 	}
 	
-	var tb = document.getElementById("table");
+	var tb = document.createElement("table");
 	
 	//clear table
 	while(tb.hasChildNodes()) {
@@ -52,6 +53,16 @@ function makeTable() {
 		//insert row
 		tb.appendChild(newr);
 	}
+
+	++numberoftabs;
+	
+	var tabs = $( "#tabholder" ).tabs();
+	var tabhead = tabs.find( "ul" );
+	$( "<li><a href='#" + numberoftabs + "'>Tab " + numberoftabs + "</a></li>" ).appendTo( tabhead );
+	$( "<div id='" + numberoftabs + "'></div>" ).appendTo( tabs );
+	
+	tabs.tabs( "refresh" );
+	document.getElementById(numberoftabs).appendChild(tb);
 }
 
 function errorsfound() {

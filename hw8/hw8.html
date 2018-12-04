@@ -39,9 +39,6 @@
 			
 			(function($){
 				$("#tabholder").tabs();
-				$("#add").click(function() {
-					$("#tabholder").tabs("add", "remoteTab.txt", "A New Tab!");
-				});
 			})(jQuery);
          });
       </script>
@@ -64,14 +61,13 @@
 			<input type="text" id="ye" onchange='$("#ye-s").slider("value", document.getElementById("ye").value)'>
 			<div id="ye-s"></div>
 			<br><br>
-			<button type="button" id="add">Submit</button>
-			<button onclick="newTable()">Submit</button>
+			<button onclick="makeTable()">Submit</button>
 			
 			<div id="error"></div>
 		</div>
-		<div id="tabholder">
-			</table>
-			<table id="table">
-		</div>
+    <div id="tabholder"> 
+      <ul id="tabhead">
+      </ul>
+    </div>
 	</body>
 </html>
