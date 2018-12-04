@@ -13,14 +13,20 @@ div {
 	border: 1px SaddleBrown solid;
 	padding: 1em;
 	color: black;
-	width: 20em;
+	width: 20%;
 	max-width: 80%;
+}
+
+#tabholder {
+	float: right;
+	width: 75%;
+	height: 20em;
 }
 
 table {
 	display: block;
-	max-height: 40em;
-	max-width: 90%;
+	max-height: 20em;
+	max-width: 100%;
 	overflow: auto;
 	border-collapse: collapse;
 }
