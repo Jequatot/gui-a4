@@ -1,21 +1,29 @@
-function makeTable() {
+var numberoftabs = 0;
+
+function makeTable(newtab) {
 	if(errorsfound()) return;
 	var temp;
+	var xs = parseInt(document.getElementById("xs").value);
+	var xe = parseInt(document.getElementById("xe").value);
+	var ys = parseInt(document.getElementById("ys").value);
+	var ye = parseInt(document.getElementById("ye").value);
 	
-	
-	if(document.getElementById("xs").value > document.getElementById("xe").value) {
-		temp = document.getElementById("xe").value;
-		document.getElementById("xe").value = document.getElementById("xs").value;
-		document.getElementById("xs").value = temp;
+	if(xs > xe) {
+		temp = xe;
+		xe = xs;
+		xs = temp;
 	}
 	
-	if(document.getElementById("ys").value > document.getElementById("ye").value) {
-		temp = document.getElementById("ye").value;
-		document.getElementById("ye").value = document.getElementById("ys").value;
-		document.getElementById("ys").value = temp;
+	if(ys > ye) {
+		temp = ye;
+		ye = ys;
+		ys = temp;
 	}
 	
-	var tb = document.getElementById("table");
+	var tb
+	if(newtab)
+		tb = document.createElement("table");
+	else tb = document.getElementById("dynamic-table");
 	
 	//clear table
 	while(tb.hasChildNodes()) {
@@ -26,7 +34,7 @@ function makeTable() {
 	var newr = document.createElement("tr");
 	var newh = document.createElement("th");
 	newr.appendChild(newh);
-	for(var i = document.getElementById("xs").value; i <= document.getElementById("xe").value; i++) {
+	for(var i = xs; i <= xe; i++) {
 		newh = document.createElement("th");
 		newh.innerHTML = i;
 		newr.appendChild(newh);
@@ -34,7 +42,7 @@ function makeTable() {
 	tb.appendChild(newr);
 	
 	//iterate down table
-	for(var i = document.getElementById("ys").value; i <= document.getElementById("ye").value; i++) {
+	for(var i = ys; i <= ye; i++) {
 		newr = document.createElement("tr");
 		
 		//make horizonal header
@@ -43,7 +51,7 @@ function makeTable() {
 		newr.appendChild(newh);
 		
 		//insert values
-		for(var j = document.getElementById("xs").value; j <= document.getElementById("xe").value; j++) {
+		for(var j = xs; j <= xe; j++) {
 			var newd = document.createElement("td");
 			newd.innerHTML = i*j;
 			newr.appendChild(newd);
@@ -51,6 +59,17 @@ function makeTable() {
 		
 		//insert row
 		tb.appendChild(newr);
+	}
+	if(newtab) {
+		++numberoftabs;
+		
+		var tabs = $( "#tabholder" ).tabs();
+		var tabhead = tabs.find( "ul" );
+		$( "<li id='tab" + numberoftabs + "'><a href='#" + numberoftabs + "'>" + xs + "-" + xe + ', ' + ys + "-" + ye + "</a><button onclick='deleteTab(" + numberoftabs + ")'>x</button></li>" ).appendTo( tabhead );
+		$( "<div id='" + numberoftabs + "'></div>" ).appendTo( tabs );
+		
+		tabs.tabs( "refresh" );
+		document.getElementById(numberoftabs).appendChild(tb);
 	}
 }
 
@@ -75,4 +94,18 @@ function errorsfound() {
 	document.getElementById("error").innerHTML = result;
 	if(result == "") return false;
 	return true;
+}
+
+function deleteAllTabs() {
+	for(var i = 0; i <= numberoftabs; ++i) {
+		if(document.getElementById("tab" + i) != null)
+			deleteTab(i);
+	}
+}
+
+function deleteTab(tabnum) {
+	tab = document.getElementById("tab" + tabnum);
+	tab.parentNode.removeChild(tab);
+	tabcontent = document.getElementById(tabnum);
+	tabcontent.parentNode.removeChild(tabcontent);
 }

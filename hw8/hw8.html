@@ -22,13 +22,15 @@
          $(function() {
 		 
 			var slideopt = {
-				max: "50",
+				max: "100",
 				value: "0",
 				slide: function() {
 					document.getElementById("xs").value = $("#xs-s").slider("value");
 					document.getElementById("xe").value = $("#xe-s").slider("value");
 					document.getElementById("ys").value = $("#ys-s").slider("value");
 					document.getElementById("ye").value = $("#ye-s").slider("value");
+					
+					makeTable(0);
 				}
 			}
 		 
@@ -39,39 +41,49 @@
 			
 			(function($){
 				$("#tabholder").tabs();
-				$("#add").click(function() {
-					$("#tabholder").tabs("add", "remoteTab.txt", "A New Tab!");
-				});
 			})(jQuery);
-         });
+		});
+		 
+		$( document ).ready(function() {
+			$("#xs-s").slider("value", parseInt(document.getElementById("xs").value));
+			$("#xe-s").slider("value", parseInt(document.getElementById("xe").value));
+			$("#ys-s").slider("value", parseInt(document.getElementById("ys").value));
+			$("#ye-s").slider("value", parseInt(document.getElementById("ye").value));
+			makeTable(0);
+		});
       </script>
 	</head>
 	<body>
+		<div id="tabholder"> 
+			<ul id="tabhead">
+				<li><a href="#0">Default</a></li>
+			</ul>
+			<div id="0">
+				<table id="dynamic-table">
+				</table>
+			</div>
+		</div>
 		<div id="input-box">
 			X-Starting Value:<br>
-			<input type="text" id="xs" onchange='$("#xs-s").slider("value", document.getElementById("xs").value)'>
+			<input type="text" id="xs" value="0" onchange='$("#xs-s").slider("value", document.getElementById("xs").value)'>
 			<div id="xs-s"></div>
 			<br>
 			X-Ending Value:<br>
-			<input type="text" id="xe" onchange='$("#xe-s").slider("value", document.getElementById("xe").value)'>
+			<input type="text" id="xe" value="0" onchange='$("#xe-s").slider("value", document.getElementById("xe").value)'>
 			<div id="xe-s"></div>
 			<br>
 			Y-Starting Value:<br>
-			<input type="text" id="ys" onchange='$("#ys-s").slider("value", document.getElementById("ys").value)'>
+			<input type="text" id="ys" value="0" onchange='$("#ys-s").slider("value", document.getElementById("ys").value)'>
 			<div id="ys-s"></div>
 			<br>
 			Y-Ending Value:<br>
-			<input type="text" id="ye" onchange='$("#ye-s").slider("value", document.getElementById("ye").value)'>
+			<input type="text" id="ye" value="0" onchange='$("#ye-s").slider("value", document.getElementById("ye").value)'>
 			<div id="ye-s"></div>
 			<br><br>
-			<button type="button" id="add">Submit</button>
-			<button onclick="newTable()">Submit</button>
+			<button onclick="makeTable(1);">New tab</button>
+			<button onclick="deleteAllTabs();">Remove all tabs</button>
 			
 			<div id="error"></div>
-		</div>
-		<div id="tabholder">
-			</table>
-			<table id="table">
 		</div>
 	</body>
 </html>
