@@ -1,5 +1,17 @@
+/*
+	Jeffrey Quattrociocchi
+	jeffreyquattro@gmail.com
+	UMass Lowell
+	91.61 GUI Programming I
+	Created: 11-28-18
+	
+	modified code from assignments 6 & 7
+*/
+
+// used to create id's for seperate tabs
 var numberoftabs = 0;
 
+// manipulate the table - newtab bool decides whether or not the new table is made in a new tab
 function makeTable(newtab) {
 	if(errorsfound()) return;
 	var temp;
@@ -73,6 +85,7 @@ function makeTable(newtab) {
 	}
 }
 
+// checks for errors in the input
 function errorsfound() {
 	result = "";
 	if(isNaN(parseInt(document.getElementById("xs").value))) {
@@ -96,6 +109,7 @@ function errorsfound() {
 	return true;
 }
 
+// remove all the tabs and their content
 function deleteAllTabs() {
 	for(var i = 0; i <= numberoftabs; ++i) {
 		if(document.getElementById("tab" + i) != null)
@@ -103,6 +117,7 @@ function deleteAllTabs() {
 	}
 }
 
+// remove a tab and its content
 function deleteTab(tabnum) {
 	tab = document.getElementById("tab" + tabnum);
 	tab.parentNode.removeChild(tab);

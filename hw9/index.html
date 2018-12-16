@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+	Jeffrey Quattrociocchi
+	jeffreyquattro@gmail.com
+	UMass Lowell
+	91.61 GUI Programming I
+	Created: 12-04-18
+	
+	makes tables based on the hw8 specifications
+-->
+<html lang="engl">
+	<head>
+		<meta charset="UTF-8">
+		<title>Assignment #6</title>
+		<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+		<script src="js/hw9.js"></script>
+		<link rel="stylesheet" href="css/hw9.css">
+		<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+	</head>
+	<body>
+		<!--img src="assets/Scrabble_Board_OneLine.png" alt="line"-->
+		<div id="board">
+		</div>
+		<p id="score">SCORE: </p>
+		<div id="hand">
+		</div>
+		<button id="handbutton" onclick="new_hand()">New Hand (93 Left)</button>
+		<button id="bagbutton" onclick="shuffle()">Shuffle Bag<br/></button>
+	</body>
+</html>
