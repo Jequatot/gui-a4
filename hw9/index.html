@@ -6,12 +6,15 @@
 	91.61 GUI Programming I
 	Created: 12-04-18
 	
-	makes tables based on the hw8 specifications
+	Scrabble one line project
+	
+	Tracks score across words
+	Does not check if word is in dictionary
 -->
 <html lang="engl">
 	<head>
 		<meta charset="UTF-8">
-		<title>Assignment #6</title>
+		<title>Assignment #9</title>
 		<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
 		<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 		<script src="js/hw9.js"></script>
@@ -23,10 +26,15 @@
 		<!--img src="assets/Scrabble_Board_OneLine.png" alt="line"-->
 		<div id="board">
 		</div>
-		<p id="score">SCORE: </p>
+		<p id="score">ROUND SCORE: </p>
 		<div id="hand">
 		</div>
 		<button id="handbutton" onclick="new_hand()">New Hand (93 Left)</button>
 		<button id="bagbutton" onclick="shuffle()">Shuffle Bag<br/></button>
+		<div class="scorebox">
+			<div id="wordlist">
+			</div>
+			<b><div id="tscore">TOTAL SCORE: 0</div></b>
+		</div>
 	</body>
 </html>

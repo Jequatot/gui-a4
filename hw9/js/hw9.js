@@ -40,6 +40,7 @@ var scoredist = {
 var total = 100;
 var bag = letterdist.slice();
 var score = [];
+var totalscore = 0;
 
 $( document ).ready(function() {
 	for(var i = 0; i < 15; i++) {
@@ -67,7 +68,7 @@ $( document ).ready(function() {
 	{
 		start: function(event, ui) {
 			score[score.indexOf($(this).attr("id"))] = " ";
-			calc_score();
+			calc_score(true);
 		}
 	}
 	);
@@ -76,7 +77,7 @@ $( document ).ready(function() {
 			$(ui.draggable).css("left", $(this).css("left"));
 			$(ui.draggable).css("top", $(this).css("top"));
 			score[parseInt($(this).attr("id"))] = $(ui.draggable).attr("id");
-			calc_score();
+			calc_score(true);
 		}
 	});
 });
@@ -108,28 +109,37 @@ function pull_letter() {
 	return String.fromCharCode(65 + i);
 }
 
-function calc_score() {
-	var totalscore = 0;
+function calc_score(split) {
+	var roundscore = 0;
 	var multiplier = 1;
-	$("#score").text("SCORE: ");
+	var word = "";
+	$("#score").text("ROUND SCORE: ");
 	for(var i = 0; i < 15; i++) {
 		if(score[i] != " ") {
 			var letterscore = scoredist[$("#" + score[i]).text()];
 			
-			
 			if(i == 3 || i == 11) letterscore *= 2;
-			totalscore += letterscore;
+			roundscore += letterscore;
 			if(i == 6 || i == 8) multiplier *= 2;
-			$("#score").text($("#score").text() + letterscore + " (" + $("#" + score[i]).text() + ((i == 3 || i == 11) ? "x2) " : ") "));
+			if(split)
+				$("#score").text($("#score").text() + letterscore + " (" + $("#" + score[i]).text() + ((i == 3 || i == 11) ? "x2) " : ") "));
+			else
+				word += $("#" + score[i]).text();
 		}
 	}
-	if(totalscore > 0)
-		$("#score").text($("#score").text() + "x" + multiplier + " = " + totalscore*multiplier);
+	if(roundscore > 0) {
+		if(!split) {
+			$("#wordlist").html($("#wordlist").html() + word + " : " + roundscore*multiplier + "<br>");
+			totalscore += roundscore*multiplier;
+			$("#tscore").text("TOTAL SCORE: " + totalscore);
+		} else
+			$("#score").text($("#score").text() + "x" + multiplier + " = " + roundscore*multiplier);
+	}
 }
 
 function new_hand() {
 	$("#score").text("SCORE: ");
-	
+	calc_score(false);
 	for(var i = 0; i < 15; i++) {
 		if(score[i] != " ") {
 			var whichtoken = $("#" + score[i]).attr("id").substr(1);
@@ -146,7 +156,7 @@ function new_hand() {
 	{
 		start: function(event, ui) {
 			score[score.indexOf($(this).attr("id"))] = " ";
-			calc_score();
+			calc_score(true);
 		}
 	}
 	);
